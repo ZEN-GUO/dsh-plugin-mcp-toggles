@@ -98,6 +98,23 @@ schema 投影与派发都走同一个解析器，因此被关掉的工具模型�
 |---|---|---|
 | `sharedResourceTools` | `true` | 关闭全部 MCP 时是否连共享资源工具一起隐藏。 |
 | `extraServers` | `[]` | 额外要认作 MCP 服务器的名字；用于服务器暂时没有注册任何工具时也能列出来。 |
+| `allowedOrigins` | `[]` | 额外允许调用本插件 API 的浏览器 Origin。监听器的本地 Origin 总是允许；通过 Tailscale Serve、反向代理或自定义域名访问时，把浏览器实际使用的 `https://...` Origin 加到这里。 |
+
+例如通过 Tailscale Serve 访问：
+
+```yaml
+- id: mcp-toggles
+  name: dsh-plugin-mcp-toggles
+  config:
+    sharedResourceTools: true
+    allowedOrigins:
+      - https://zen-omen15-linux.tail785d47.ts.net:8443
+      - https://dsh.zenguo.me
+```
+
+> `webServer.getOrigin()` 返回的是本地监听地址（如 `http://127.0.0.1:3080`），
+> 不是 `--public-url`。所以远程访问必须显式配置 `allowedOrigins`，否则浏览器
+> 的 POST 会带公网 `Origin` 并被拒绝，表现为“能看到列表但所有开关都未授权”。
 
 ## 兼容性
 

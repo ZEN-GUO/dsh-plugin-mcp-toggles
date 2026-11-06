@@ -1,6 +1,6 @@
 {
   "name": "dsh-plugin-mcp-toggles",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "type": "module",
   "description": "Turn installed MCP servers on or off per conversation, from a picker in the session header.",
   "keywords": [
@@ -11,15 +11,15 @@
     "model-context-protocol",
     "plugin"
   ],
-  "homepage": "https://github.com/ZhaoHanshao/dsh-plugin-mcp-toggles#readme",
+  "homepage": "https://github.com/ZEN-GUO/dsh-plugin-mcp-toggles#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ZhaoHanshao/dsh-plugin-mcp-toggles.git"
+    "url": "git+https://github.com/ZEN-GUO/dsh-plugin-mcp-toggles.git"
   },
   "bugs": {
-    "url": "https://github.com/ZhaoHanshao/dsh-plugin-mcp-toggles/issues"
+    "url": "https://github.com/ZEN-GUO/dsh-plugin-mcp-toggles/issues"
   },
-  "author": "ZhaoHanshao",
+  "author": "ZhaoHanshao; fork maintained by ZEN-GUO",
   "license": "MIT",
   "engines": {
     "node": "^22.19.0 || >=24.0.0"
@@ -60,7 +60,8 @@
     }
   },
   "scripts": {
-    "prepublishOnly": "node --check lib/index.js && node --check lib/client.js"
+    "test": "node --test test/*.test.mjs",
+    "prepublishOnly": "node --check lib/index.js && node --check lib/client.js && node --test test/*.test.mjs"
   },
   "publishConfig": {
     "access": "public"
