@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.1
+
+- Count project MCP tools through the agent-scoped tool view, so enabled
+  project servers report their tools and connection state correctly.
+
 ## 0.2.0
 
 - Every MCP (global and project-level) starts **disabled** in each new session.

@@ -83,7 +83,7 @@ panel.
 ## Install
 
 ```bash
-dsh plugin --profile web add github:ZEN-GUO/dsh-plugin-mcp-toggles#v0.2.0
+dsh plugin --profile web add github:ZEN-GUO/dsh-plugin-mcp-toggles#v0.2.1
 ```
 
 Restart DSH and hard-refresh the browser once after installing a new client
