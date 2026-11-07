@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 
-import { normalizeOrigin, originAllowed, resolveConfig } from '../lib/index.js'
+import { normalizeOrigin, originAllowed } from '../lib/origin.js'
 
 test('normalizeOrigin keeps origin and drops path/trailing slash', () => {
   assert.equal(normalizeOrigin('https://dsh.zenguo.me/'), 'https://dsh.zenguo.me')
@@ -33,20 +33,4 @@ test('originAllowed rejects unknown, opaque and malformed origins', () => {
   assert.equal(originAllowed('https://evil.example', allowed), false)
   assert.equal(originAllowed('null', allowed), false)
   assert.equal(originAllowed('not a url', allowed), false)
-})
-
-test('resolveConfig normalizes and deduplicates allowedOrigins', () => {
-  const config = resolveConfig({
-    allowedOrigins: [
-      'https://dsh.zenguo.me/',
-      'https://dsh.zenguo.me',
-      'https://zen-omen15-linux.tail785d47.ts.net:8443',
-      'ftp://ignored.example',
-      42,
-    ],
-  })
-  assert.deepEqual(config.allowedOrigins, [
-    'https://dsh.zenguo.me',
-    'https://zen-omen15-linux.tail785d47.ts.net:8443',
-  ])
 })

@@ -1,6 +1,6 @@
 {
   "name": "dsh-plugin-mcp-toggles",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "type": "module",
   "description": "Turn installed MCP servers on or off per conversation, from a picker in the session header.",
   "keywords": [
@@ -38,7 +38,9 @@
     "lib/client.js",
     "cordis.patch.yml",
     "locale/*.json",
-    "icon.svg"
+    "icon.svg",
+    "lib/project.js",
+    "lib/origin.js"
   ],
   "dsh": {
     "bundle": {
@@ -52,10 +54,18 @@
     }
   },
   "peerDependencies": {
-    "@deepseek-ai/dsh-client-ui-conversation": ">=0.2.1-rc.3"
+    "@deepseek-ai/dsh-client-ui-conversation": ">=0.2.1-rc.3",
+    "@deepseek-ai/dsh-mcp-client": ">=0.2.1-rc.3 <0.3.0-0",
+    "@deepseek-ai/dsh-tools": ">=0.2.1-rc.3 <0.3.0-0"
   },
   "peerDependenciesMeta": {
     "@deepseek-ai/dsh-client-ui-conversation": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-mcp-client": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-tools": {
       "optional": true
     }
   },
@@ -65,5 +75,10 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "jsonc-parser": "^3.3.1",
+    "smol-toml": "^1.9.1",
+    "yaml": "^2.9.1"
   }
 }
